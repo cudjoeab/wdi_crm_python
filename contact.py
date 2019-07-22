@@ -34,8 +34,6 @@ class Contact:
   def all(cls):
     """This method should return all of the existing contacts"""
     return Contact.contacts 
-     
-        
 
 
   @classmethod
@@ -88,11 +86,11 @@ class Contact:
 
 
 
-  def delete(self,id) :
+  def delete(self) :
     """This method should delete the contact
     HINT: Check the Array class docs for built-in methods that might be useful here
     """
-    Contact.contacts.remove(id) 
+    Contact.contacts.remove(self) 
     return Contact.contacts 
     
 
@@ -120,9 +118,9 @@ print(contact1.update('first_name', 'Bob'))
 print('Full name')
 print(contact1.full_name('first_name')) 
 
-'''call find method to select which contact will be deleted'''
-print('Remove Contact') 
-print(contact1.delete(Contact.find(2))) 
+# '''call find method to select which contact will be deleted'''
+# print('Remove Contact') 
+# print(contact1.delete(Contact.find(2))) 
 
 # print('Delete all contacts')
 # print(Contact.delete_all(Contact.contacts)) #WHY?!?!?!?!
