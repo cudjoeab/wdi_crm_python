@@ -91,7 +91,10 @@ class CRM:
 
     search_attribute = input()
 
-    print(Contact.find_by(self, search_attribute)) 
+    print('\n Enter search:\n')
+    search_value = input().lower()
+
+    print(Contact.find_by(search_attribute, search_value)) 
 
 
 a_crm_app= CRM()
