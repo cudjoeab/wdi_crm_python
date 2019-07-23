@@ -13,5 +13,8 @@ class Contact(Model):
     full_name = self.first_name + ' ' + self.last_name
     return full_name 
 
+  class Meta:
+    database = db # This model uses the "people.db" database.
+
 db.connect()
 db.create_tables([Contact])  

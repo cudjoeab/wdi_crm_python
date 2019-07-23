@@ -43,7 +43,10 @@ class CRM:
     print('Any notes? ')
     note = input().lower()
 
-    Contact.create(first_name , last_name, email, note)
+
+    # Pet.create(owner=uncle_bob, name='Kitty', animal_type='cat')
+
+    Contact.create(first_name=first_name, last_name=last_name, email=email, note=note)
   
   def modify_existing_contact(self):
     print('\n--EDIT AN EXISTING CONTACT--')
@@ -60,26 +63,38 @@ class CRM:
     edit_attribute = input()
 
     print('What are your changes?')
-    modify_value = str(input())
+    edit_value = str(input())
     print('\n')
+    
+    if edit_attribute == 'first_name':
+      query = Contact.update(first_name = edit_value).where(Contact.id == user_id)
+    elif edit_attribute == 'last_name':
+      query = Contact.update(last_name = edit_value).where(Contact.id == user_id)
+    elif edit_attribute == 'email':
+      query = Contact.update(email = edit_value).where(Contact.id == user_id)
+    elif edit_attribute == 'note':
+      query = Contact.update(note = edit_value).where(Contact.id == user_id)
 
-    print(Contact.update(Contact.find(user_id), edit_attribute, modify_value))
+
+    
+    query.execute() 
+    # print(Contact.update(Contact.find(user_id), edit_attribute, modify_value))
     print('\nYour changes have been made.')
 
   
   def delete_contact(self):
     print("\n--DELETE CONTACT--\n")
     print("Please enter their ID:")
-    contact_to_delete = int(input())
-    print(Contact.find(contact_to_delete))
-    Contact.delete(Contact.find(contact_to_delete)) 
-    print(f'{contact_to_delete}, is now deleted.')
+    id = int(input())
+    print(Contact.select(id))
+    Contact.delete(Contact.find(id)) 
+    print(f'{id}, is now deleted.')
   
 
   def display_all_contacts(self):
     print('\n --ALL CONTACTS--\n')
-    for contact in Contact.contacts:
-      print(contact)
+    for contact in Contact.select():
+      print(f'{contact.id}: {contact.first_name} | {contact.last_name} | {contact.email} | {contact.note} ')
   
   def search_by_attribute(self):
     print('\n--SEARCH BY ATTRIBUTE--\n')
