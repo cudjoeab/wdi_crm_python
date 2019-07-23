@@ -28,7 +28,7 @@ class Contact:
   
 
   def __str__(self): 
-    return f''' First name: {self.first_name}\n Last name: {self.last_name}\n Email: {self.email}\n Note: {self.note}\n ID: {self.id} '''
+    return f''' First name: {self.first_name}\n Last name: {self.last_name}\n Email: {self.email}\n Note: {self.note}\n ID: {self.id}\n '''
 
   @classmethod
   def all(cls):
@@ -100,30 +100,30 @@ class Contact:
 contact1 = Contact.create('Betty', 'Maker', 'bettymakes@bitmakerlabs.com', 'Loves Pokemon')
 contact2 = Contact.create('Bit', 'Bot', 'bitbot@bitmakerlabs.com', 'beep boop')
 
-print(len(Contact.contacts))
-print(contact1.id)
-print(contact2.id) 
+# print(len(Contact.contacts))
+# print(contact1.id)
+# print(contact2.id) 
 
-print(contact1)
+# print(contact1)
 
-print("Find 2nd - Bot")
-print(Contact.find(2))
+# print("Find 2nd - Bot")
+# print(Contact.find(2))
 
-print("Find by first_name")
-print(Contact.find_by("first_name", "Betty"))
+# print("Find by first_name")
+# print(Contact.find_by("first_name", "Betty"))
 
-print('Update contact')
-print(contact1.update('first_name', 'Bob')) 
+# print('Update contact')
+# print(contact1.update('first_name', 'Bob')) 
 
-print('Full name')
-print(contact1.full_name('first_name')) 
+# print('Full name')
+# print(contact1.full_name('first_name')) 
 
-# '''call find method to select which contact will be deleted'''
-# print('Remove Contact') 
-# print(contact1.delete(Contact.find(2))) 
+# # '''call find method to select which contact will be deleted'''
+# # print('Remove Contact') 
+# # print(contact1.delete(Contact.find(2))) 
 
-# print('Delete all contacts')
-# print(Contact.delete_all(Contact.contacts)) #WHY?!?!?!?!
+# # print('Delete all contacts')
+# # print(Contact.delete_all(Contact.contacts)) #WHY?!?!?!?!
 
 
 

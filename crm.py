@@ -9,6 +9,7 @@ class CRM:
       self.call_option(user_selected)
 
   def print_main_menu(self):
+    print('\n --MAIN MENU-- \n')
     print('[1] Add a new contact')
     print('[2] Modify an existing contact')
     print('[3] Delete a contact')
@@ -32,7 +33,7 @@ class CRM:
       sys.exit() 
   
   def add_new_contact(self):
-
+    print('\n--ADD A NEW CONTACT--')
     print('Please enter their first name: ')
     first_name = input().lower()
     print('Please enter their last name: ')
@@ -44,24 +45,54 @@ class CRM:
 
     Contact.create(first_name , last_name, email, note)
   
-  # def modify_existing_contact(self):
-  #   print("Please enter ")
+  def modify_existing_contact(self):
+    print('\n--EDIT AN EXISTING CONTACT--')
+    print('Enter the ID of the user you wish to modify:')
+    user_id = int(input())
+
+    print('\nSelect from the options below:')
+    print('- first_name -')
+    print('- last_name -')
+    print('- email -')
+    print('- note -')
+    
+
+    edit_attribute = input()
+
+    print('What are your changes?')
+    modify_value = str(input())
+    print('\n')
+
+    print(Contact.update(Contact.find(user_id), edit_attribute, modify_value))
+    print('\nYour changes have been made.')
+
   
   def delete_contact(self):
-    print("\nDelete Contact\n")
+    print("\n--DELETE CONTACT--\n")
     print("Please enter their ID:")
     contact_to_delete = int(input())
     print(Contact.find(contact_to_delete))
     Contact.delete(Contact.find(contact_to_delete)) 
-    # print(f'{contact_to_delete}, is now deleted.')
+    print(f'{contact_to_delete}, is now deleted.')
   
 
   def display_all_contacts(self):
-    print('All contacts:')
+    print('\n --ALL CONTACTS--\n')
     for contact in Contact.contacts:
       print(contact)
-  #exit()
-  # def search_by_attribute(self):
+  
+  def search_by_attribute(self):
+    print('\n--SEARCH BY ATTRIBUTE--\n')
+    print('\nSelect from the options below:')
+    print('- first_name -')
+    print('- last_name -')
+    print('- email -')
+    print('- note -')
+
+    search_attribute = input()
+
+    print(Contact.find_by(self, search_attribute)) 
+
 
 a_crm_app= CRM()
 a_crm_app.main_menu()
